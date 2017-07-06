@@ -31,6 +31,8 @@ var (
 	simplifyAST = flag.Bool("s", false, "simplify code")
 	doDiff      = flag.Bool("d", false, "display diffs instead of rewriting files")
 	allErrors   = flag.Bool("e", false, "report all errors (not just the first 10 on different lines)")
+	// features
+	importWhitespaces = flag.Bool("import_whitespaces", true, "remove empty lines in import blocks")
 
 	// debugging
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to this file")
@@ -104,6 +106,10 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 		} else {
 			fmt.Fprintf(os.Stderr, "warning: rewrite ignored for incomplete programs\n")
 		}
+	}
+
+	if *importWhitespaces {
+		RemoveImportWhitespaces(fileSet, file)
 	}
 
 	ast.SortImports(fileSet, file)
