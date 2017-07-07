@@ -9,10 +9,14 @@ Gofmt formats Go programs. This is improved version.
 Features
 ====
 
-- remove empty lines between import specs in block (-import_whitespaces enabled by default)
+- remove empty lines between import specs in block (-import\_whitespaces enabled by default)
+- join all import blocks (-join\_imports)
+- show ast
 
 Usage:
 ====
+
+```
 
 	gofmt [flags] [path ...]
 
@@ -36,3 +40,4 @@ The flags are:
 		If a file's formatting is different from gofmt's, overwrite it
 		with gofmt's version. If an error occurred during overwriting,
 		the original file is restored from an automatic backup.
+``````

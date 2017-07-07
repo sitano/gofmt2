@@ -33,9 +33,11 @@ var (
 	allErrors   = flag.Bool("e", false, "report all errors (not just the first 10 on different lines)")
 	// features
 	importWhitespaces = flag.Bool("import_whitespaces", true, "remove empty lines in import blocks")
+	joinImports       = flag.Bool("join_imports", false, "join imports blocks")
 
 	// debugging
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to this file")
+	printAST   = flag.Bool("ast", false, "print transformed AST instead of source")
 )
 
 const (
@@ -108,6 +110,10 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 		}
 	}
 
+	if *joinImports {
+		JoinImports(fileSet, file)
+	}
+
 	if *importWhitespaces {
 		RemoveImportWhitespaces(fileSet, file)
 	}
@@ -121,6 +127,10 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 	res, err := format(fileSet, file, sourceAdj, indentAdj, src, printer.Config{Mode: printerMode, Tabwidth: tabWidth})
 	if err != nil {
 		return err
+	}
+
+	if *printAST {
+		return ast.Print(fileSet, file)
 	}
 
 	if !bytes.Equal(src, res) {

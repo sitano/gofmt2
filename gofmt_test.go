@@ -59,6 +59,8 @@ func runTest(t *testing.T, in, out string) {
 	*simplifyAST = false
 	*rewriteRule = ""
 	*importWhitespaces = true
+	*joinImports = false
+	*printAST = false
 	stdin := false
 	for _, flag := range strings.Split(gofmtFlags(in, 20), " ") {
 		elts := strings.SplitN(flag, "=", 2)

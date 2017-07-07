@@ -125,7 +125,26 @@ import (
 
 import (
 
-    "A"
+
+    // A before
+    "A" // A inline
+    // A after
+
+
+    // B before
+    "B" // B inline
+    // B after
+
+
+    )
+
+import (
+
+
+    // A before
+    "A" // A inline
+    // A after
+
 
     )
 
