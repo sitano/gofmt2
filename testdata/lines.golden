@@ -1,0 +1,32 @@
+package blah
+
+import "a"
+
+import (
+	"b"
+)
+
+import (
+	"c"
+)
+
+type A struct{}
+
+type B struct{}
+
+var C int
+
+var (
+	E int
+	D string
+)
+
+func f() int {
+	return 1
+}
+
+func f2() int {}
+
+// blah
+// blah
+func f3() {}

@@ -88,6 +88,11 @@ import (
 
 import (
 	// A before
+	// A2 before
+	/*arst*/
+	/*
+		art
+	*/
 	"A" // A inline
 	// A after
 	// B before
