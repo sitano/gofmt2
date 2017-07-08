@@ -126,27 +126,32 @@ import (
 import (
 
 
-    // A before
-    "A" // A inline
-    // A after
+	// A before
+	// A2 before
+	/*arst*/
+	/*
+	art
+	*/
+	"A" // A inline
+	// A after
 
 
-    // B before
-    "B" // B inline
-    // B after
+	// B before
+	"B" // B inline
+	// B after
 
 
-    )
+	)
 
 import (
 
 
-    // A before
-    "A" // A inline
-    // A after
+	// A before
+	"A" // A inline
+	// A after
 
 
-    )
+	)
 
 import (
 	"dedup_by_group"

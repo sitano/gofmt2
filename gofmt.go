@@ -34,6 +34,7 @@ var (
 	// features
 	importWhitespaces = flag.Bool("import_whitespaces", true, "remove empty lines in import blocks")
 	joinImports       = flag.Bool("join_imports", false, "join imports blocks")
+	sortImports       = flag.Bool("sort_imports", true, "sort imports decls")
 
 	// debugging
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to this file")
@@ -118,7 +119,9 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 		RemoveImportWhitespaces(fileSet, file)
 	}
 
-	ast.SortImports(fileSet, file)
+	if *sortImports {
+		ast.SortImports(fileSet, file)
+	}
 
 	if *simplifyAST {
 		simplify(file)

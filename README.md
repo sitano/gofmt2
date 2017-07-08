@@ -11,7 +11,7 @@ Features
 
 - remove empty lines between import specs in block (-import\_whitespaces enabled by default)
 - join all import blocks (-join\_imports)
-- show ast
+- show ast (-ast)
 
 Usage:
 ====
@@ -40,4 +40,10 @@ The flags are:
 		If a file's formatting is different from gofmt's, overwrite it
 		with gofmt's version. If an error occurred during overwriting,
 		the original file is restored from an automatic backup.
+	-import_whitespaces
+		Remove empty lines in import blocks (default true).
+	-join_imports
+		Join imports blocks (default false).
+	-ast
+		Print AST.
 ``````

@@ -30,7 +30,7 @@ func RemoveImportWhitespaces(fset *token.FileSet, f *ast.File) {
 			)
 
 		*/
-		for fset.Position(d.Specs[0].Pos()).Line > fset.Position(d.Pos()).Line+1 {
+		for ispecwc(fset, d.Specs[0].(*ast.ImportSpec)) > fset.Position(d.Pos()).Line+1 {
 			fset.File(d.Pos()).MergeLine(fset.Position(d.Pos()).Line + 1)
 		}
 
@@ -49,7 +49,7 @@ func RemoveImportWhitespaces(fset *token.FileSet, f *ast.File) {
 		for j, s := range d.Specs {
 			if j > i {
 				prev := fset.Position(d.Specs[j-1].Pos()).Line
-				cur := fset.Position(s.Pos()).Line
+				cur := ispecwc(fset, s.(*ast.ImportSpec))
 				if cur > 1+prev {
 					// j begins a new run. End this one.
 					for k := prev + 1; k < cur; k++ {
@@ -80,4 +80,15 @@ func RemoveImportWhitespaces(fset *token.FileSet, f *ast.File) {
 			}
 		}
 	}
+}
+
+func ispecwc(fset *token.FileSet, d *ast.ImportSpec) int {
+	l := fset.Position(d.Pos()).Line
+	if d.Doc != nil {
+		c := fset.Position(d.Doc.Pos()).Line
+		if c < l {
+			l = c
+		}
+	}
+	return l
 }
