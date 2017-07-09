@@ -35,6 +35,7 @@ var (
 	importWhitespaces = flag.Bool("import_whitespaces", true, "remove empty lines in import blocks")
 	joinImports       = flag.Bool("join_imports", false, "join imports blocks")
 	sortImports       = flag.Bool("sort_imports", true, "sort imports decls")
+	fixLines          = flag.Bool("fix_lines", true, "fix lines")
 
 	// debugging
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to this file")
@@ -127,6 +128,10 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 		simplify(file)
 	}
 
+	if *fixLines {
+		FixLines(fileSet, file)
+	}
+
 	res, err := format(fileSet, file, sourceAdj, indentAdj, src, printer.Config{Mode: printerMode, Tabwidth: tabWidth})
 	if err != nil {
 		return err
@@ -134,6 +139,10 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 
 	if *printAST {
 		return ast.Print(fileSet, file)
+	}
+
+	if *fixLines {
+		res = FixLinesInText(res)
 	}
 
 	if !bytes.Equal(src, res) {

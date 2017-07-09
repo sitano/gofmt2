@@ -16,11 +16,38 @@ D string
 
     )
 func f() int {
+    // ast
 
+    // blah
+    /*s
+    */
     return 1
 
 }
 func f2() int {}
 // blah
 // blah
-func f3() {}
+func f3() {
+
+}
+func f4() {
+
+// blah
+}
+func f5() {
+
+    return 5
+
+}
+
+
+    func f6() {
+        if x {
+
+            if y {
+                fmt.Print("hi")
+            }
+
+        }
+
+    }
