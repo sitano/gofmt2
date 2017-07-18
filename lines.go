@@ -3,7 +3,6 @@ package main
 import (
 	"go/ast"
 	"go/token"
-	"regexp"
 )
 
 // FixLines fixes empty and missed lines in the source file
@@ -72,37 +71,4 @@ func isLineComment(fset *token.FileSet, f *ast.File, l int) bool {
 		}
 	}
 	return false
-}
-
-// }
-// func ...
-var funcAfterBrace = regexp.MustCompile("}([\\t ]*\\n\\r?)[\\t ]*func")
-
-// }
-//
-//
-// func ...
-var doubleLines = regexp.MustCompile("\\n\\r?[\\t ]*\\n\\r?[\\t ]*\\n\\r?")
-
-// { } or {
-//
-// }
-var noEmptyBodies = regexp.MustCompile("{\\s+}")
-
-var noEmptyLineBeforeRbrace = regexp.MustCompile("}[\\t ]*\\n\\r?\\s*\\n\\r?([\\t ]*)}")
-var noEmptyLineAfterLbrace = regexp.MustCompile("{[\\t ]*\\s*(\\n\\r?[\\t ]*)\\S+")
-
-func FixLinesInText(source []byte) []byte {
-	ix := funcAfterBrace.FindAllSubmatchIndex(source, -1)
-	if ix != nil {
-		s := string(source)
-		for i := len(ix) - 1; i >= 0; i-- {
-			sm := ix[i]
-			s = s[:sm[2]] + "\n\n" + s[sm[3]:]
-		}
-		source = []byte(s)
-	}
-	source = doubleLines.ReplaceAll(source, []byte("\n\n"))
-	source = noEmptyBodies.ReplaceAll(source, []byte("{}"))
-	return source
 }

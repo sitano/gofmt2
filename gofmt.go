@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"go/ast"
 	"go/parser"
-	"go/printer"
 	"go/scanner"
 	"go/token"
 	"io"
@@ -21,6 +20,8 @@ import (
 	"runtime"
 	"runtime/pprof"
 	"strings"
+
+	"github.com/sitano/gofmt2/printer"
 )
 
 var (
@@ -139,10 +140,6 @@ func processFile(filename string, in io.Reader, out io.Writer, stdin bool) error
 
 	if *printAST {
 		return ast.Print(fileSet, file)
-	}
-
-	if *fixLines {
-		res = FixLinesInText(res)
 	}
 
 	if !bytes.Equal(src, res) {

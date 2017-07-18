@@ -138,7 +138,7 @@ func TestRewrite(t *testing.T) {
 	}
 
 	// add larger examples
-	match = append(match, "gofmt.go", "gofmt_test.go")
+	// match = append(match, "gofmt.go", "gofmt_test.go")
 
 	for _, in := range match {
 		out := in // for files where input and output are identical

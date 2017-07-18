@@ -13,9 +13,10 @@ import (
 	"bytes"
 	"go/ast"
 	"go/parser"
-	"go/printer"
 	"go/token"
 	"strings"
+
+	"github.com/sitano/gofmt2/printer"
 )
 
 // parse parses src, which was read from the named file,

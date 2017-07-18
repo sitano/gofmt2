@@ -13,7 +13,6 @@ import (
 	"flag"
 	"fmt"
 	"go/ast"
-	"go/printer"
 	"go/token"
 	"io"
 	"os"
@@ -21,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 	"testing"
+
+	"github.com/sitano/gofmt2/printer"
 )
 
 var (
