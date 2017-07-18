@@ -25,7 +25,10 @@ func f() int {
 
 }
 func f2() int {}
-func f22() int {}
+func f22(){
+
+
+}
 // blah
 // blah
 func f3() {

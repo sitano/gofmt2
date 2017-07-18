@@ -501,6 +501,7 @@ func (p *printer) fieldList(fields *ast.FieldList, isStruct, isIncomplete bool) 
 		}
 
 	}
+
 	p.print(unindent, formfeed, rbrace, token.RBRACE)
 }
 
@@ -944,7 +945,7 @@ func (p *printer) stmtList(list []ast.Stmt, nindent int, nextIsRBrace bool) {
 			if len(p.output) > 0 {
 				// only print line break if we are not at the beginning of the output
 				// (i.e., we are not printing only a partial program)
-				p.linebreak(p.lineFor(s.Pos()), 1, ignore, i == 0 || nindent == 0 || p.linesFrom(line) > 0)
+				p.linebreak(p.pos.Line, 1, ignore, i == 0 || nindent == 0 || p.linesFrom(line) > 0)
 			}
 			p.recordLine(&line)
 			p.stmt(s, nextIsRBrace && i == len(list)-1)
@@ -970,9 +971,13 @@ func (p *printer) stmtList(list []ast.Stmt, nindent int, nextIsRBrace bool) {
 // block prints an *ast.BlockStmt; it always spans at least two lines.
 func (p *printer) block(b *ast.BlockStmt, nindent int) {
 	p.print(b.Lbrace, token.LBRACE)
-	p.stmtList(b.List, nindent, true)
-	p.linebreak(p.lineFor(b.Rbrace), 1, ignore, true)
-	p.print(b.Rbrace, token.RBRACE)
+	if len(b.List) > 0 {
+		p.stmtList(b.List, nindent, true)
+		p.linebreak(p.pos.Line, 1, ignore, true)
+		p.print(b.Rbrace, token.RBRACE)
+	} else {
+		p.print(noExtraLinebreak, b.Rbrace, token.RBRACE, noExtraLinebreak)
+	}
 }
 
 func isTypeName(x ast.Expr) bool {

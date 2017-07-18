@@ -11,7 +11,7 @@ Features
 
 - remove empty lines between import specs in block (-import\_whitespaces enabled by default)
 - join all import blocks (-join\_imports)
-- fix lines (-fix\_lines)
+- fix lines
 - show ast (-ast)
 
 Usage:
@@ -45,8 +45,6 @@ The flags are:
 		Remove empty lines in import blocks (default true).
 	-join_imports
 		Join imports blocks (default false).
-	-fix_lines
-		fix lines (default true)
 	-ast
 		Print AST.
 ``````
