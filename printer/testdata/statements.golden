@@ -129,18 +129,12 @@ func _() interface{} {
 
 // Formatting of if-statement headers.
 func _() {
-	if true {
-	}
-	if true {
-	}	// no semicolon printed
-	if expr {
-	}
-	if expr {
-	}	// no semicolon printed
-	if expr {
-	}	// no parens printed
-	if expr {
-	}	// no semicolon and parens printed
+	if true {}
+	if true {}	// no semicolon printed
+	if expr {}
+	if expr {}	// no semicolon printed
+	if expr {}	// no parens printed
+	if expr {}	// no semicolon and parens printed
 	if x := expr; true {
 		use(x)
 	}
@@ -151,18 +145,12 @@ func _() {
 
 // Formatting of switch-statement headers.
 func _() {
-	switch {
-	}
-	switch {
-	}	// no semicolon printed
-	switch expr {
-	}
-	switch expr {
-	}	// no semicolon printed
-	switch expr {
-	}	// no parens printed
-	switch expr {
-	}	// no semicolon and parens printed
+	switch {}
+	switch {}	// no semicolon printed
+	switch expr {}
+	switch expr {}	// no semicolon printed
+	switch expr {}	// no parens printed
+	switch expr {}	// no semicolon and parens printed
 	switch x := expr; {
 	default:
 		use(
@@ -176,8 +164,7 @@ func _() {
 
 // Formatting of switch statement bodies.
 func _() {
-	switch {
-	}
+	switch {}
 
 	switch x := 0; x {
 	case 1:
