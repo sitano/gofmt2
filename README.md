@@ -1,4 +1,4 @@
-# gofmt.v2
+# gofmt2
 strict version of gofmt improved and idempotent
 
 Desc
