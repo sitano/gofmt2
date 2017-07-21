@@ -14,6 +14,58 @@ Features
 - fix lines
 - show ast (-ast)
 
+Code style changes to original `gofmt`
+====
+
+`func` always separated by an empty line if its not sequential block of one-liners:
+
+```
+func a() {}
+func b() {}
+                <-- added
+func c() {
+    //
+}
+                <-- added
+func d() {}
+
+```
+
+empty blocks are not allowed on multiple lines:
+
+```
+func a() {
+
+} -> func a() {}
+
+func b() {
+} -> func b() {}
+
+for {
+} -> for {}
+
+switch {
+} -> switch {}
+```
+
+no empty lines are allowed before closing right bracket and after opening left bracket:
+
+```
+func a() int {
+                <-- would be deleted
+    if {
+                <-- would be deleted
+        fmt.Print(1)
+                <-- would be deleted
+    }
+
+    return 1
+                <-- would be deleted
+}
+```
+
+by default imports in a single block are concatenated.
+
 Usage:
 ====
 
