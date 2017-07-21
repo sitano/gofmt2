@@ -106,3 +106,5 @@ TODO
 
 - rewrite expressions in which `{rvalue ? lvalue} -> {lvalue ? rvalue}`
 - do not allow comments in form `//*`, `***`, `/**`
+- surround operators with spaces
+- remove unnec tabs for comments
