@@ -105,3 +105,4 @@ TODO
 ====
 
 - rewrite expressions in which `{rvalue ? lvalue} -> {lvalue ? rvalue}`
+- do not allow comments in form `//*`, `***`, `/**`
