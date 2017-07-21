@@ -978,10 +978,10 @@ func (p *printer) block(b *ast.BlockStmt, nindent int) {
 	if len(b.List) > 0 {
 		p.stmtList(b.List, nindent, true)
 		p.linebreak(p.pos.Line, 1, ignore, true)
-		p.print(b.Rbrace, token.RBRACE)
-	} else {
-		p.print(noExtraLinebreak, b.Rbrace, token.RBRACE, noExtraLinebreak)
+	} else if nindent > 0 {
+		p.print(indent, unindent)
 	}
+	p.print(b.Rbrace, token.RBRACE)
 }
 
 func isTypeName(x ast.Expr) bool {

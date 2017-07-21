@@ -230,31 +230,23 @@ func _() {
 
 // Formatting of for-statement headers for single-line for-loops.
 func _() {
-	for {
-	}
-	for expr {
-	}
-	for expr {
-	}	// no parens printed
-	for {
-	}	// no semicolons printed
+	for {}
+	for expr {}
+	for expr {}	// no parens printed
+	for {}		// no semicolons printed
 	for x := expr; ; {
 		use(x)
 	}
-	for expr {
-	}	// no semicolons printed
-	for expr {
-	}	// no semicolons and parens printed
-	for ; ; expr = false {
-	}
+	for expr {}	// no semicolons printed
+	for expr {}	// no semicolons and parens printed
+	for ; ; expr = false {}
 	for x := expr; expr; {
 		use(x)
 	}
 	for x := expr; ; expr = false {
 		use(x)
 	}
-	for ; expr; expr = false {
-	}
+	for ; expr; expr = false {}
 	for x := expr; expr; expr = false {
 		use(x)
 	}
@@ -268,31 +260,23 @@ func _() {
 
 // Formatting of for-statement headers for multi-line for-loops.
 func _() {
-	for {
-	}
-	for expr {
-	}
-	for expr {
-	}	// no parens printed
-	for {
-	}	// no semicolons printed
+	for {}
+	for expr {}
+	for expr {}	// no parens printed
+	for {}		// no semicolons printed
 	for x := expr; ; {
 		use(x)
 	}
-	for expr {
-	}	// no semicolons printed
-	for expr {
-	}	// no semicolons and parens printed
-	for ; ; expr = false {
-	}
+	for expr {}	// no semicolons printed
+	for expr {}	// no semicolons and parens printed
+	for ; ; expr = false {}
 	for x := expr; expr; {
 		use(x)
 	}
 	for x := expr; ; expr = false {
 		use(x)
 	}
-	for ; expr; expr = false {
-	}
+	for ; expr; expr = false {}
 	for x := expr; expr; expr = false {
 		use(x)
 	}
@@ -309,18 +293,12 @@ func _() {
 
 // Formatting of selected short single- and multi-line statements.
 func _() {
-	if cond {
-	}
-	if cond {
-	}	// multiple lines
-	if cond {
-	} else {
-	}	// else clause always requires multiple lines
+	if cond {}
+	if cond {}		// multiple lines
+	if cond {} else {}	// else clause always requires multiple lines
 
-	for {
-	}
-	for i := 0; i < len(a); 1++ {
-	}
+	for {}
+	for i := 0; i < len(a); 1++ {}
 	for i := 0; i < len(a); 1++ {
 		a[i] = i
 	}
@@ -328,14 +306,10 @@ func _() {
 		a[i] = i
 	}	// multiple lines
 
-	for range a {
-	}
-	for _ = range a {
-	}
-	for _, _ = range a {
-	}
-	for i := range a {
-	}
+	for range a {}
+	for _ = range a {}
+	for _, _ = range a {}
+	for i := range a {}
 	for i := range a {
 		a[i] = i
 	}
@@ -358,101 +332,61 @@ func _() {
 // Don't remove mandatory parentheses around composite literals in control clauses.
 func _() {
 	// strip parentheses - no composite literals or composite literals don't start with a type name
-	if x {
-	}
-	if x {
-	}
-	if []T{} {
-	}
-	if []T{} {
-	}
-	if []T{} {
-	}
+	if x {}
+	if x {}
+	if []T{} {}
+	if []T{} {}
+	if []T{} {}
 
-	for x {
-	}
-	for x {
-	}
-	for []T{} {
-	}
-	for []T{} {
-	}
-	for []T{} {
-	}
+	for x {}
+	for x {}
+	for []T{} {}
+	for []T{} {}
+	for []T{} {}
 
-	switch x {
-	}
-	switch x {
-	}
-	switch []T{} {
-	}
-	switch []T{} {
-	}
+	switch x {}
+	switch x {}
+	switch []T{} {}
+	switch []T{} {}
 
-	for _ = range []T{T{42}} {
-	}
+	for _ = range []T{T{42}} {}
 
 	// leave parentheses - composite literals start with a type name
-	if (T{}) {
-	}
-	if (T{}) {
-	}
-	if (T{}) {
-	}
+	if (T{}) {}
+	if (T{}) {}
+	if (T{}) {}
 
-	for (T{}) {
-	}
-	for (T{}) {
-	}
-	for (T{}) {
-	}
+	for (T{}) {}
+	for (T{}) {}
+	for (T{}) {}
 
-	switch (T{}) {
-	}
-	switch (T{}) {
-	}
+	switch (T{}) {}
+	switch (T{}) {}
 
-	for _ = range (T1{T{42}}) {
-	}
+	for _ = range (T1{T{42}}) {}
 
-	if x == (T{42}[0]) {
-	}
-	if (x == T{42}[0]) {
-	}
-	if x == (T{42}[0]) {
-	}
-	if x == (T{42}[0]) {
-	}
-	if x == (T{42}[0]) {
-	}
-	if x == a+b*(T{42}[0]) {
-	}
-	if (x == a+b*T{42}[0]) {
-	}
-	if x == a+b*(T{42}[0]) {
-	}
-	if x == a+(b*(T{42}[0])) {
-	}
-	if x == a+b*(T{42}[0]) {
-	}
-	if (a + b*(T{42}[0])) == x {
-	}
-	if (a + b*(T{42}[0])) == x {
-	}
+	if x == (T{42}[0]) {}
+	if (x == T{42}[0]) {}
+	if x == (T{42}[0]) {}
+	if x == (T{42}[0]) {}
+	if x == (T{42}[0]) {}
+	if x == a+b*(T{42}[0]) {}
+	if (x == a+b*T{42}[0]) {}
+	if x == a+b*(T{42}[0]) {}
+	if x == a+(b*(T{42}[0])) {}
+	if x == a+b*(T{42}[0]) {}
+	if (a + b*(T{42}[0])) == x {}
+	if (a + b*(T{42}[0])) == x {}
 
-	if struct{ x bool }{false}.x {
-	}
-	if (struct{ x bool }{false}.x) == false {
-	}
-	if struct{ x bool }{false}.x == false {
-	}
+	if struct{ x bool }{false}.x {}
+	if (struct{ x bool }{false}.x) == false {}
+	if struct{ x bool }{false}.x == false {}
 }
 
 // Extra empty lines inside functions. Do respect source code line
 // breaks between statement boundaries but print at most one empty
 // line at a time.
 func _() {
-
 	const _ = 0
 
 	const _ = 1
@@ -469,13 +403,9 @@ func _() {
 	use(x)
 
 	if x < x {
-
 		use(x)
-
 	} else {
-
 		use(x)
-
 	}
 }
 
@@ -606,7 +536,6 @@ AVeryLongLabelThatShouldNotAffectFormatting:
 
 // Formatting of empty statements.
 func _() {
-
 }
 
 func _() {

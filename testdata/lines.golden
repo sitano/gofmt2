@@ -9,7 +9,8 @@ import (
 )
 
 type A struct{}
-type B struct {}
+type B struct {
+}
 
 var C int
 var (
@@ -28,6 +29,8 @@ func f() int {
 
 func f2() int {}
 
+func f22() {}
+
 // blah
 // blah
 func f3() {}
@@ -43,10 +46,8 @@ func f5() {
 
 func f6() {
 	if x {
-
 		if y {
 			fmt.Print("hi")
 		}
-
 	}
 }

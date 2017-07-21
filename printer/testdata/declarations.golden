@@ -773,10 +773,12 @@ func _() int {
 
 // making function declarations safe for new semicolon rules
 func _()	{ /* single-line function because of "short-ish" comment */ }
-func _() { /* multi-line function because of "long-ish" comment - much more comment text is following here */ /* and more */ }
+func _() { /* multi-line function because of "long-ish" comment - much more comment text is following here */ /* and more */
+}
 
 func _() {
-	/* multi-line func because block is on multiple lines */ }
+	/* multi-line func because block is on multiple lines */
+}
 
 // ellipsis parameters
 func _(...int)
@@ -801,118 +803,96 @@ func _(x ...chan int)
 
 // these parameter lists must remain multi-line since they are multi-line in the source
 func _(bool,
-	int) {
-}
+	int) {}
 
 func _(x bool,
-	y int) {
-}
+	y int) {}
 
 func _(x,
-	y bool) {
-}
+	y bool) {}
 
 func _(bool,	// comment
-	int) {
-}
+	int) {}
 
 func _(x bool,	// comment
-	y int) {
-}
+	y int) {}
 
 func _(x,	// comment
-	y bool) {
-}
+	y bool) {}
 
 func _(bool,	// comment
 	// comment
-	int) {
-}
+	int) {}
 
 func _(x bool,	// comment
 	// comment
-	y int) {
-}
+	y int) {}
 
 func _(x,	// comment
 	// comment
-	y bool) {
-}
+	y bool) {}
 
 func _(bool,
 	// comment
-	int) {
-}
+	int) {}
 
 func _(x bool,
 	// comment
-	y int) {
-}
+	y int) {}
 
 func _(x,
 	// comment
-	y bool) {
-}
+	y bool) {}
 
 func _(x,	// comment
 	y,	// comment
-	z bool) {
-}
+	z bool) {}
 
 func _(x,	// comment
 	y,	// comment
-	z bool) {
-}
+	z bool) {}
 
 func _(x int,	// comment
 	y float,	// comment
-	z bool) {
-}
+	z bool) {}
 
 // properly indent multi-line signatures
 func ManageStatus(in <-chan *Status, req <-chan Request,
 	stat chan<- *TargetInfo,
-	TargetHistorySize int) {
-}
+	TargetHistorySize int) {}
 
 func MultiLineSignature0(
 	a, b, c int,
-) {
-}
+) {}
 
 func MultiLineSignature1(
 	a, b, c int,
 	u, v, w float,
-) {
-}
+) {}
 
 func MultiLineSignature2(
 	a, b,
 	c int,
-) {
-}
+) {}
 
 func MultiLineSignature3(
 	a, b,
 	c int, u, v,
 	w float,
-	x ...int) {
-}
+	x ...int) {}
 
 func MultiLineSignature4(
 	a, b, c int,
 	u, v,
 	w float,
-	x ...int) {
-}
+	x ...int) {}
 
 func MultiLineSignature5(
 	a, b, c int,
 	u, v, w float,
 	p, q,
 	r string,
-	x ...int) {
-}
+	x ...int) {}
 
 // make sure it also works for methods in interfaces
 type _ interface {

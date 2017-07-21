@@ -363,8 +363,7 @@ func _() {
 		return x < y
 	}
 
-	f(func() {
-	})
+	f(func() {})
 	f(func() int {
 		return 0
 	})

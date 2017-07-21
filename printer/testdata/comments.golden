@@ -149,11 +149,9 @@ func typeswitch(x interface{}) {
 	default:
 	}
 
-	switch x.(type) {
-	}
+	switch x.(type) {}
 
-	switch v0, ok := x.(int); v := x.(type) {
-	}
+	switch v0, ok := x.(int); v := x.(type) {}
 
 	switch v0, ok := x.(int); x.(type) {
 	case byte:	// this comment should be on the same line as the keyword
@@ -553,8 +551,7 @@ func _() {
 
 // Some interesting interspersed comments.
 // See below for more common cases.
-func _( /* this */ x /* is */ /* an */ int) {
-}
+func _( /* this */ x /* is */ /* an */ int) {}
 
 func _( /* no params - extra blank before and after comment */ )	{}
 func _(a, b int /* params - no extra blank after comment */)		{}
@@ -655,8 +652,7 @@ func _() {
 	// TODO(gri) the last comment in this example should be aligned */
 	for i = 0;	// comment after semicolon
 	i < 9;		/* comment before semicolon - ok to move after semicolon */
-	i++ /* comment before opening curly brace */ {
-	}
+	i++ /* comment before opening curly brace */ {}
 }
 
 // If there is no newline following punctuation, commas move before the punctuation.
@@ -672,8 +668,7 @@ func f(x /* comment */, y int, z int /* comment */, u, v, w int /* comment */) {
 
 func g(
 	x int,	/* comment */
-) {
-}
+) {}
 
 type _ struct {
 	a, b /* comment */, c int
@@ -684,8 +679,7 @@ type _ struct {
 }
 
 func _() {
-	for a /* comment */, b := range x {
-	}
+	for a /* comment */, b := range x {}
 }
 
 // Print line directives correctly.
