@@ -100,3 +100,8 @@ The flags are:
 	-ast
 		Print AST.
 ``````
+
+TODO
+====
+
+- rewrite expressions in which `{rvalue ? lvalue} -> {lvalue ? rvalue}`
