@@ -36,7 +36,6 @@ func f22() {}
 func f3() {}
 
 func f4() {
-
 	// blah
 }
 

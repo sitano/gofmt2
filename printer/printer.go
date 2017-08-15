@@ -439,6 +439,14 @@ func (p *printer) writeCommentPrefix(pos, next token.Position, prev, comment *as
 			n = 1
 		}
 
+		// do not allow leading empty lines before
+		// comment on open brace
+		if n > 1 && len(p.output) > 0 {
+			if p.output[len(p.output)-1] == '{' {
+				n = 1
+			}
+		}
+
 		if n > 0 {
 			// use formfeeds to break columns before a comment;
 			// this is analogous to using formfeeds to separate
